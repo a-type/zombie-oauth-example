@@ -30,8 +30,8 @@ describe("the linkedin oauth login flow", function () {
 
 		return browser.visit("https://www.linkedin.com/uas/login")
 		.then(function () {
-			// redirected to the google oauth login screen
-			// the element values here are dependent on google's
+			// redirected to the linkedin oauth login screen
+			// the element values here are dependent on linkedin's
 			// login screen design, which may change!
 			return browser
 			.fill("#session_key-login", linkedinEmail)
@@ -39,9 +39,14 @@ describe("the linkedin oauth login flow", function () {
 			.pressButton("#signin-submit");
 		})
 		.then(function () {
-			// one more step...
+			// one more step... since we are in a mobile browser,
+			// linkedin asks if we'd like to download the app instead.
+			// ... we can't do that!
+
 			// we anticipate some browser errors here because of differences
-			// between Zombie and "real" browsers. These errors aren't fatal,
+			// between zombie and "real" browsers. we suspect that this page 
+			// may be trying to interact with the play store since we are
+			// pretending to be an android device. these errors aren't fatal,
 			// so let's ignore them...
 			browser.silent = true;
 			return browser.clickLink("#action-no-app");
@@ -67,7 +72,7 @@ describe("the linkedin oauth login flow", function () {
 		})
 		.then(function () {
 			// since the user has already authorized the application
-			// out-of-band, and already has a google session token,
+			// out-of-band, and already has a linkedin session token,
 			// the acceptance screen (and framebuster) should be skipped
 			return browser.wait(null);
 		})
