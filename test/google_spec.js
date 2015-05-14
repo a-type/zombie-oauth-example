@@ -15,6 +15,15 @@ describe("the google oauth login flow", function () {
 	before(function () {
 		browser = new Browser();
 
+		// Google is picky about its browser versions - with unrecognized
+		// or old user agent strings, it will display a "not supported" page
+		// instead of a login page. Let's set it to a current Chrome string.
+		browser.userAgent = [
+			"Mozilla/5.0 (Windows NT 6.1)",
+			"AppleWebKit/537.36 (KHTML, like Gecko)",
+			"Chrome/41.0.2228.0 Safari/537.36"
+		].join(" ");
+
 		return browser.visit("/")
 		.then(function () {
 			return browser.clickLink("Google");
@@ -51,7 +60,7 @@ describe("the google oauth login flow", function () {
 		if (browser.window.document.title !== "OAuth Profile Page") {
 			console.log(browser.html());
 		}
-		expect(browser.window.document.title, "profile title").to.equal("OAuth Profile Page");
+		expect(browser.window.document.title, "profile title").to.equal("Example Profile Page");
 	});
 
 	it("displays the profile page with the correct name", function () {

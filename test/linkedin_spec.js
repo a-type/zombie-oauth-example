@@ -20,7 +20,14 @@ describe("the linkedin oauth login flow", function () {
 
 		browser = new Browser();
 
-		// so, we will visit the linkedin site
+		// so, we will visit the linkedin site.. as a mobile client.
+		// the only login site we have found which can be run by Zombie
+		browser.userAgent = [
+			"Mozilla/5.0 (Linux; U; Android 2.2.1; en-ca; LG-P505R Build/FRG83)",
+			"AppleWebKit/533.1 (KHTML, like Gecko)",
+			"Version/4.0 Mobile Safari/533.1"
+		].join(" ");
+
 		return browser.visit("https://www.linkedin.com/uas/login")
 		.then(function () {
 			// redirected to the google oauth login screen
@@ -81,11 +88,10 @@ describe("the linkedin oauth login flow", function () {
 		if (browser.window.document.title !== "OAuth Profile Page") {
 			console.log(browser.html());
 		}
-		expect(browser.window.document.title, "profile title").to.equal("OAuth Profile Page");
+		expect(browser.window.document.title, "profile title").to.equal("Example Profile Page");
 	});
 
 	it("displays the profile page with the correct name", function () {
-		console.log(browser.html());
 		expect(browser.window.document.getElementById("welcome").textContent, "welcome text")
 			.to.contain(linkedinDisplayName);
 	});
