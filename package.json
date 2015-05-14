@@ -26,15 +26,19 @@
   "homepage": "https://github.com/a-type/zombie-oauth-example#readme",
   "dependencies": {
     "bell": "^2.7.1",
-    "grunt": "^0.4.5",
-    "grunt-jscs": "^1.8.0",
-    "grunt-mocha-test": "^0.12.7",
+    "bluebird": "^2.9.25",
     "handlebars": "^3.0.3",
-    "hapi": "^8.4.0",
-    "mocha": "^2.2.4",
-    "zombie": "^4.0.10"
+    "hapi": "^8.4.0"
   },
   "engines": {
     "iojs": "^2.0.1"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-jscs": "^1.8.0",
+    "grunt-mocha-test": "^0.12.7",
+    "zombie": "^4.0.10"
   }
 }
