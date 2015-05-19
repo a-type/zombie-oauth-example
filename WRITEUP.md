@@ -11,7 +11,7 @@ Solving this problem is doable, but it requires some flexibility and a lot of tr
 ## Tip #1: Create test users
 Since CAPTCHAs are fairly standard in social account signup pages, it's not like you could automate user creation anyways. Still, there are a few other things you should keep in mind when creating your test accounts:
 
- * Check the legal terms of the APIs for the social service you want to log in to. Some companies will specify conditions for creating developer test accounts, like [LinkedIn](https://developer.linkedin.com/legal/api-terms-of-use).
+ * Check the legal terms of the APIs for the social service you want to log in to. Some companies will specify conditions for creating developer test accounts, like [LinkedIn](https://developer.linkedin.com/legal/api-terms-of-use). Google+ has no restrictions on multiple accounts in its [terms of service](http://www.google.com/intl/en/policies/terms/), but it does recommend that you [use your real name](https://support.google.com/plus/answer/1228271?hl=en) if you are creating a profile. Be sure to carefully read the terms of use for the APIs you are using and ensure that you are operating within them.
  * Keep rate limits in mind when doing repeated automated testing. If you run into trouble, try using multiple accounts and swapping them out for different test suites.
  * Keep your account information in secure storage. We ended up storing our account details in S3 and rotating them out for different integration test runs.
 
